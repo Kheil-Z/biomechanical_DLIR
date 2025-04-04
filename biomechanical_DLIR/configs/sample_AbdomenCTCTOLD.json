@@ -1,0 +1,33 @@
+{
+    // "model_class":"LKU",
+    // "model_kwargs": {"convs":[1, 96,80,128]},
+    "model_class":"BasicNet",
+    "model_kwargs": {"backbone":"attention","convs":[1, 96,80,128]},
+    
+    "cpkt":"none",
+
+    "out_folder":"/test/test/",
+    "model_id":"model_1",
+    
+    "batch_size":16,
+    "epochs":200,
+
+    "optimizer":"Adam",
+    "lr":1e-3,
+    "optimizer_kwargs":{},
+    "scheduler":"ReduceLROnPlateau",
+    "scheduler_kwargs":{},
+    
+    "dataset":"AbdomenCTCT",
+    "shape":[96, 96, 96],
+    "loss":{
+            "train": {
+                    "NCC":0.8,
+                    "DetJac":0.5,
+                    "Dice":0.2},
+            "val": {
+                "NCC":0.8,
+                "DetJac":0.5,
+                "Dice":0.2}
+            }
+}

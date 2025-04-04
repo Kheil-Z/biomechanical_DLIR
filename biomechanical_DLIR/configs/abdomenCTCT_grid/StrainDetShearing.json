@@ -1,0 +1,31 @@
+{
+    "model_class":"BasicNet",
+    "model_kwargs": {"backbone":"attention","channels":[32, 64, 128, 256, 512],"strides":[2, 2, 2, 2, 2]},
+    "integration_steps": 7,
+    
+    "cpkt":"none",
+
+    "out_folder":"test_models_AbdomenCTCT/",
+    
+    "batch_size":4,
+    "epochs":100,
+
+    "optimizer":"Adam",
+    "lr":1e-3,
+    "optimizer_kwargs":{},
+    "scheduler":"ReduceLROnPlateau",
+    "scheduler_kwargs":{"mode":"min", "factor":0.5, "patience":40},
+    
+    "dataset":"AbdomenCTCT",
+    "map_labels":{"total":{"original_labels":[10,11,12,13,14,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115],
+                            "replacement_labels":[10,10,12,12,12,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92,92]}},
+    "additional_labels":{"label":[1,2,3,4,5,6,7,8,9,10,11,12,13],
+                        "total":[26,92],
+                        "lung_nodules":[1]},
+    "shape":[96,80,128],
+    "loss": {
+        "MSE":0.0,
+        "StrainDetShearing":0.0,
+        "DiceCE":0.0}
+}
+

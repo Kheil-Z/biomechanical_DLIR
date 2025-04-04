@@ -1,0 +1,32 @@
+{
+    "model_class":"BasicNet",
+    "model_kwargs": {"backbone":"attention","convs":[1, 96,80,128]},
+    "integration_steps": 7,
+    
+    "cpkt":"none",
+
+    "out_folder":"test_models_AbdomenCTCT/",
+    
+    "batch_size":8,
+    "epochs":200,
+
+    "optimizer":"Adam",
+    "lr":1e-3,
+    "optimizer_kwargs":{},
+    "scheduler":"ReduceLROnPlateau",
+    "scheduler_kwargs":{"mode":"min", "factor":0.5, "patience":40},
+    
+    "dataset":"AbdomenCTCTROI",
+    "label_roi":5,
+    "additional_labels":{"total":[1,2,3,4,5,6,7,8,9,10,11,12,13],
+                        "label":[1,3,5,6,7,10,11,14,18,20,51,64,98,99,100,101,117],
+                        "lung_vessels":[1],
+                        "lung_nodules":[1],
+                        "liver_vessels":[1]},
+    "shape":[64,64,64],
+    "loss": {
+        "NCC":0.7,
+        "DetJac":0.1,
+        "DiceCE":0.2}
+}
+
