@@ -1,4 +1,5 @@
-# Code supporting paper
+# Biomechanical Constraints Assimilation in Deep-Learning Image Registration
+Supporting code for reproducing [Biomechanical Constraints Assimilation in Deep-Learning Image Registration: Application to sliding and locally rigid deformations](https://arxiv.org/abs/2504.05444)
 
 ## Install dependencies
 - ```conda create --name biomechanical_DLIR python=3.10```
@@ -43,6 +44,7 @@ For more information:
 ## Custom Dataset or Models
 Implementing a custom dataset requires adding a [custom dataset class](biomechanical_DLIR/src/datasets/) , then calling that dataset in the json object.
 Likewise, [custom models](biomechanical_DLIR/src/models/) can be added.
+
 
 
 
