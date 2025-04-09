@@ -19,7 +19,7 @@ def main(args):
     paths_all = pathsTR+ pathsTS
 
     # TotalSegmentator info:
-    task_list = ["total","lung_vessels","body","liver_vessels","lung_nodules"]
+    task_list = ["total","body","lung_nodules"]# ["total","lung_vessels","body","liver_vessels","lung_nodules"]
     total_nun_tasks = len(task_list)
     total_nun_paths = len(paths_all)
     total = total_nun_tasks*total_nun_paths
@@ -28,8 +28,8 @@ def main(args):
         for task_num,task in enumerate(task_list):
             current_total+=1
             out_path = p.replace("imagesTr/",f"segmentationsTr/{task}/").replace("imagesTs/",f"segmentationsTs/{task}/") 
-            # os.system(f"TotalSegmentator -i {p} -o {out_path} --task {task} --preview --device gpu --ml")  
-            os.system(f"TotalSegmentator -i {p} -o {out_path} --task {task}  --device gpu --ml")  
+            # # os.system(f"TotalSegmentator -i {p} -o {out_path} --task {task} --preview --device gpu --ml")  
+            os.system(f"TotalSegmentator -i {p} -o {out_path} --task {task}  --device gpu --ml") 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

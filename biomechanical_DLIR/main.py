@@ -207,7 +207,7 @@ def make_data(params,device, mode="train"):
 
     kwargs = {"batch_size":params['batch_size'],
               "shuffle":True,
-              "num_workers": 4,
+              "num_workers": 4, # Change to 0 if _pickle.PicklingError: Can't pickle
               "drop_last": True}
     if mode == "val":
         kwargs["batch_size"] = 1
@@ -388,7 +388,7 @@ def train_val_reg(model,trainDL,valDL,params, optimizer, scheduler):
     if params["dataset"].lower() == "simulated":
         basic_metrics["Rigidity"] = 1.0
     if params["dataset"].lower() == "simulatedshear":
-        basic_metrics["StrainDetShearing"] = 1.0
+        basic_metrics["RigidityDetShearing"] = 1.0
     if params["dataset"].lower() in ["abdomenctct","abdomenctctroi","nlst"]:
         basic_metrics["Dice"] = 1.0
     

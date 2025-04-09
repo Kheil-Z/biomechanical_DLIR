@@ -318,8 +318,6 @@ def main(args):
             # # Get normals:
             points, normals = compute_interface_normals(mask.squeeze(),num_neighbors = 40)
             for num, (x,y,z) in enumerate(points):
-                print(x,y,z,normals[num,:])
-                # print(mask_strain_directions.shape)
                 mask_strain_directions[:,z,y,x] = normals[num,:]
 
             if mask.int().max() == 0:

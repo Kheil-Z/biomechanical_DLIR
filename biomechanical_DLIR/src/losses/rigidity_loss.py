@@ -20,7 +20,7 @@ Notes:
 
 import torch
 
-class RigidityTensor:
+class Rigidity:
     """
     Class to compute Strain Rigidity loss
     """
