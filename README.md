@@ -3,8 +3,8 @@ Supporting code for reproducing [Biomechanical Constraints Assimilation in Deep-
 
 ## Install dependencies
 - ```conda create --name biomechanical_DLIR python=3.10```
+- ```conda activate biomechanical_DLIR```   
 - ```pip install -r requirements.txt```
-- ```conda activate biomechanical_DLIR```
 
 ## Download Learn2Reg AbdomenCTCT data and preprocess (skip to [Training Script](#training-script))
 Part of our results were obtained on the [Learn2Reg AbdomenCTCT](https://learn2reg.grand-challenge.org/Datasets/) dataset.
@@ -46,5 +46,16 @@ Implementing a custom dataset requires adding a [custom dataset class](biomechan
 Likewise, [custom models](biomechanical_DLIR/src/models/) can be added.
 
 
-
+# 📝 Citation
+```
+@misc{kheil2025biomechanicalconstraintsassimilationdeeplearning,
+      title={Biomechanical Constraints Assimilation in Deep-Learning Image Registration: Application to sliding and locally rigid deformations}, 
+      author={Ziad Kheil and Soleakhena Ken and Laurent Risser},
+      year={2025},
+      eprint={2504.05444},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2504.05444}, 
+}
+```
 
