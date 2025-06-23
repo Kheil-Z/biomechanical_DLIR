@@ -25,8 +25,8 @@ Usage:
 
 import torch
 from monai.networks.blocks import DVF2DDF, Warp
-from monai.networks.nets import (AttentionUnet,  # UNETR, BasicUNet, RegUNet
-                                 SegResNet, UNet)
+from monai.networks.nets import AttentionUnet  # UNETR, BasicUNet, RegUNet
+from monai.networks.nets import SegResNet, UNet
 from src.models import BaseModel
 
 

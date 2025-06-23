@@ -51,8 +51,12 @@ from loguru import logger
 from src.datasets import load_dataset
 from src.losses import create_loss_instance
 from src.models import create_network_class
-from src.utils.utils import (log_memory_usage, logger_dict_format, seed_all,
-                             setup_logging)
+from src.utils.utils import (
+    log_memory_usage,
+    logger_dict_format,
+    seed_all,
+    setup_logging,
+)
 
 
 def read_json(path):
