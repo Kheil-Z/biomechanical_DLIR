@@ -1,5 +1,5 @@
 """
-Wraps MONAI's LocalNormalizedCrossCorrelationLoss to provide a consistent interface for 
+Wraps MONAI's LocalNormalizedCrossCorrelationLoss to provide a consistent interface for
 both loss computation and metric reporting.
 
 Key Features:
@@ -16,31 +16,31 @@ Notes:
 from monai.losses import LocalNormalizedCrossCorrelationLoss
 from monai.networks.blocks import Warp
 
+
 class NCC:
-    def __init__(self,params,**kwargs):
+    def __init__(self, params, **kwargs):
         self.loss_func = LocalNormalizedCrossCorrelationLoss(**kwargs)
         self.warp_layer = Warp()
         self.device = None
 
-    def set_device(self,curr_dev):
+    def set_device(self, curr_dev):
         if self.device is None:
             self.device = curr_dev
             self.warp_layer.to(self.device)
 
-    def metric(self, inputs,ddf):
+    def metric(self, inputs, ddf):
         self.set_device(ddf.device)
 
         y_true = inputs["fixed"].to(self.device)
         y_moving = inputs["moving"].to(self.device)
         y_pred = self.warp_layer(y_moving, ddf)
-        value = self.loss_func(y_pred,y_true).item()
-        return {"NCC_metric":value}
+        value = self.loss_func(y_pred, y_true).item()
+        return {"NCC_metric": value}
 
-    def loss(self, inputs,ddf):
+    def loss(self, inputs, ddf):
         self.set_device(ddf.device)
 
         y_true = inputs["fixed"].to(self.device)
         y_moving = inputs["moving"].to(self.device)
         y_pred = self.warp_layer(y_moving, ddf)
-        return self.loss_func(y_pred,y_true)
-    
+        return self.loss_func(y_pred, y_true)

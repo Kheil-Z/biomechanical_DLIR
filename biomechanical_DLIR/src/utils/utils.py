@@ -1,7 +1,7 @@
 """
 utils.py
 
-This module provides general-purpose utility functions for reproducibility, 
+This module provides general-purpose utility functions for reproducibility,
 logging, memory profiling, and workflow setup in medical image registration pipelines.
 
 Key Functionalities:
@@ -29,36 +29,38 @@ Usage:
     total, used, pct = log_memory_usage()
 """
 
+import os
+import random
 
 import numpy as np
-import torch
-import os
-from monai.utils import set_determinism
-import random
 import psutil
+import torch
 from loguru import logger
-
+from monai.utils import set_determinism
 
 
 # Set up logging
-def setup_logging(params,save_log=True):
+def setup_logging(params, save_log=True):
     if save_log:
-        logger.add(os.path.join(params["out_folder"],"file.log"),
-                    colorize=False, backtrace=True, diagnose=True)
-    logger.debug('Program started ... ')
-    logger.debug('____'*10)
+        logger.add(
+            os.path.join(params["out_folder"], "file.log"),
+            colorize=False,
+            backtrace=True,
+            diagnose=True,
+        )
+    logger.debug("Program started ... ")
+    logger.debug("____" * 10)
 
 
 def logger_dict_format(d):
     dict_length = len(d)
-    keys_per_line = 4 if dict_length%4 == 0 else 5 
+    keys_per_line = 4 if dict_length % 4 == 0 else 5
     log = "\n \t "
-    for key_num, key in enumerate(d,1 ):
+    for key_num, key in enumerate(d, 1):
         log += f" <blue>{key}</blue> : <red>{d[key]:.3f}</red> ; "
-        if key_num%keys_per_line ==0 :
+        if key_num % keys_per_line == 0:
             log += "\n \t "
-    logger.opt(colors=True).info(log) 
-
+    logger.opt(colors=True).info(log)
 
 
 def seed_all(seed=98):
@@ -77,5 +79,7 @@ def log_memory_usage():
     total = round(psutil.virtual_memory().total / 1000 / 1000, 4)
     used = round(psutil.virtual_memory().used / 1000 / 1000, 4)
     pct = round(used / total * 100, 1)
-    logger.opt(colors=True).debug(f"Current memory usage is: <white>{used}</white> / <white>{total}</white> MB (<red>{pct} %</red>)")
+    logger.opt(colors=True).debug(
+        f"Current memory usage is: <white>{used}</white> / <white>{total}</white> MB (<red>{pct} %</red>)"
+    )
     return total, used, pct

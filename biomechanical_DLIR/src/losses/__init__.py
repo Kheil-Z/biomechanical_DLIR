@@ -1,20 +1,20 @@
 """
 Loss Loader Utility
 
-Dynamically loads and instantiates a loss class based on its name from a corresponding 
+Dynamically loads and instantiates a loss class based on its name from a corresponding
 `<name>_loss.py` file in the same directory.
 
 Useful for modular loss management and experiment configuration.
 """
 
-import os
 import importlib.util
+import os
 
 # Directory containing loss files
 losses_directory = os.path.dirname(__file__)
 
 
-def create_loss_instance(loss_name,params, **kwargs):
+def create_loss_instance(loss_name, params, **kwargs):
     """
     Create an instance of the specified loss class with optional parameters.
 
@@ -33,17 +33,23 @@ def create_loss_instance(loss_name,params, **kwargs):
 
     loss_file_path = os.path.join(losses_directory, f"{loss_name.lower()}_loss.py")
     if not os.path.exists(loss_file_path):
-        raise FileNotFoundError(f"Loss file '{loss_name.lower()}_loss.py' not found in '{losses_directory}'.")
+        raise FileNotFoundError(
+            f"Loss file '{loss_name.lower()}_loss.py' not found in '{losses_directory}'."
+        )
 
     loss_module_name = f"losses.{loss_name.lower()}_loss"
-    loss_module_spec = importlib.util.spec_from_file_location(loss_module_name, loss_file_path)
+    loss_module_spec = importlib.util.spec_from_file_location(
+        loss_module_name, loss_file_path
+    )
     loss_module = importlib.util.module_from_spec(loss_module_spec)
     loss_module_spec.loader.exec_module(loss_module)
 
     loss_class = getattr(loss_module, loss_name, None)
 
     if loss_class is None:
-        raise AttributeError(f"Loss class '{loss_name}' not found in module '{loss_module_name}'.")
+        raise AttributeError(
+            f"Loss class '{loss_name}' not found in module '{loss_module_name}'."
+        )
 
-    loss_instance = loss_class(params,**kwargs)
+    loss_instance = loss_class(params, **kwargs)
     return loss_instance
