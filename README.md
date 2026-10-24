@@ -7,7 +7,7 @@ Losses derived from solid mechanics enforce local rigidity and sliding constrain
 
 [![arXiv](https://img.shields.io/badge/arXiv-2504.05444-b31b1b.svg)](https://arxiv.org/abs/2504.05444)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.21969012-blue)](https://doi.org/10.5281/zenodo.21969012)
-[![HF Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-Loss%20Playground-yellow)](https://huggingface.co/spaces/KZ98/biomechanical-dlir-loss-playground)
+[![HF Space](https://img.shields.io/badge/%F0%9F%A4%97%20Space-Loss%20Playground-yellow)](https://huggingface.co/spaces/HocusPocus98/biomechanical-dlir-loss-playground)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 
